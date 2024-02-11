@@ -6,10 +6,15 @@ import { ChangeEvent, FormEvent, useState } from 'react';
 
 import { toast } from 'sonner';
 
-const NewNoteCard = () => {
+interface NewNoteCradProps {
+  onNoteCreated: (content: string) => void;
+}
+
+const NewNoteCard = ({ onNoteCreated }: NewNoteCradProps) => {
   const [shouldShowOnboarding, setShouldShowOnboarding] = useState(true);
   const [content, setContent] = useState('');
 
+  // FUNCTIONS
   function handleStartEditor() {
     setShouldShowOnboarding(false);
   }
@@ -25,10 +30,14 @@ const NewNoteCard = () => {
   function handleSaveNote(event: FormEvent) {
     event.preventDefault();
 
-    console.log(content);
+    onNoteCreated(content);
+
+    setContent('');
+    setShouldShowOnboarding(true);
 
     toast.success('Nota criada com sucesso!');
   }
+  // END FUNCTIONS
 
   return (
     <Dialog.Root>
@@ -85,6 +94,7 @@ const NewNoteCard = () => {
                   className="text-sm leading-6 text-slate-400 bg-transparent resize-none
                 flex-1 outline-none"
                   onChange={handleContentChanged}
+                  value={content}
                 />
               )}
             </div>
