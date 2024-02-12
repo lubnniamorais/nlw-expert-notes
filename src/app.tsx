@@ -42,6 +42,7 @@ export function App() {
 
     setSearch(query);
   }
+
   // END FUNCTIONS
 
   const filteredNotes =
