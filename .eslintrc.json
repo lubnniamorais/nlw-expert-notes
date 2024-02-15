@@ -2,6 +2,7 @@
   "extends": [
     "@rocketseat/eslint-config/react"
   ],
+  "plugins": ["simple-import-sort"],
   "rules": {
     "camelcase": "off",
     "prettier/prettier": ["error", {
@@ -13,6 +14,11 @@
       "arrowParens": "always",
       // "arrowParens": "avoid",
       "semi": true // PARA COLOCAR O ; NO FINAL, EM INGLÊS semicolon
-    }]
+    }],
+    "simple-import-sort/imports": "error"
+  },
+  "parserOptions": {
+    "sourceType": "module",
+    "ecmaVersion": "latest"
   }
 }
